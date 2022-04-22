@@ -214,7 +214,7 @@ const updateCart = async function (req, res) {
 
                     const newProduct = await cartModel.findOneAndUpdate(
                         { userId: userId, items: { $elemMatch: { productId: productId } } },
-                        { $pull: { items: { productId: productId }}, $set: { totalPrice: totalPrice, totalItems: totalItems } },
+                        { $pull: { items: { productId: productId } }, $set: { totalPrice: totalPrice, totalItems: totalItems } },
                         { new: true }
                     )
                     return res.status(201).send({ status: true, message: "successful", data: newProduct });
@@ -254,7 +254,7 @@ const getCartById = async function (req, res) {
             return res.status(400).send({ status: false, message: "User Id does't exist" })
         }
 
-        res.status(200).send({ status: false, message: "successfull", data: getCart })
+        res.status(200).send({ status: true, message: "successfull", data: getCart })
     } catch (error) {
 
         return res.status(500).send({ status: false, msg: error.message })

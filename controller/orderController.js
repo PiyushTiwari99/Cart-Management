@@ -25,10 +25,10 @@ const createOrder = async function (req, res) {
         }
         const data = req.body;
         const { cartId, cancellable, status } = data;
-        if(!Object.keys(data).include(cartId)){
+        if (Object.keys(data).includes(cartId)) {
             return res.status(404).send({ status: false, msg: "please give cartId" });
         }
-        if(cartId != cartPresent._id){
+        if (cartId != cartPresent._id) {
             return res.status(403).send({ satus: false, message: `Unauthorized access! Owner info doesn't match` })
         }
 
